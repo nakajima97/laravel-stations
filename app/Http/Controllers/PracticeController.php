@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Practice;
+use App\Practice;
+// use App\Models\Practice;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\returnSelf;
 
 class PracticeController extends Controller
 {
@@ -26,7 +29,8 @@ class PracticeController extends Controller
 
     public function getPractice()
     {
-        $practice = Practice::all();
-        return response()->json($practice);
+        $practices = Practice::all();
+        return view('getPractice', ['practices' => $practices]);
+        // return response()->json($practices);
     }
 }
