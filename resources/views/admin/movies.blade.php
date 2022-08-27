@@ -7,39 +7,33 @@
 <title>映画リスト</title>
 </head>
 <body>
-  @foreach ($movies as $movie)
-    <div>
-      <p>{{$movie->title}}</p>
-      <img src="{{$movie->image_url}}" alt="映画の画像">
-    </div>
-    <table>
-      <thead>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>画像URL</th>
+        <th>公開年</th>
+        <th>上映中かどうか</th>
+        <th>概要</th>
+        <th>登録日時</th>
+        <th>更新日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($movies as $movie)
         <tr>
-          <th>ID</th>
-          <th>タイトル</th>
-          <th>画像URL</th>
-          <th>公開年</th>
-          <th>上映中かどうか</th>
-          <th>概要</th>
-          <th>登録日時</th>
-          <th>更新日時</th>
+          <th>{{$movie->id}}</th>
+          <th>{{$movie->title}}</th>
+          <th>{{$movie->image_url}}</th>
+          <th>{{$movie->published_year}}</th>
+          <th>{{$movie->is_showing ? "上映中" : "上映予定"}}</th>
+          <th>{{$movie->description}}</th>
+          <th>{{$movie->created_at}}</th>
+          <th>{{$movie->updated_at}}</th>
         </tr>
-      </thead>
-      <tbody>
-        @foreach ($movies as $movie)
-          <tr>
-            <th>{{$movie->id}}</th>
-            <th>{{$movie->title}}</th>
-            <th>{{$movie->image_url}}</th>
-            <th>{{$movie->published_year}}</th>
-            <th>{{$movie->is_showing ? "上映中" : "上映予定"}}</th>
-            <th>{{$movie->description}}</th>
-            <th>{{$movie->created_at}}</th>
-            <th>{{$movie->updated_at}}</th>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  @endforeach
+      @endforeach
+    </tbody>
+  </table>
 </body>
 </html>
